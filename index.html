@@ -1,0 +1,314 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Voyago AI - Your AI-powered travel planning companion for perfect journeys">
+    <meta name="keywords" content="travel, AI, planner, vacation, destinations, weather, budget">
+    <title>Voyago AI - Plan Your Perfect Journey With AI</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="loading-screen" class="loading-screen">
+        <div class="loader">
+            <i class="fas fa-compass fa-spin"></i>
+            <h2>Loading Voyago AI...</h2>
+        </div>
+    </div>
+
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <i class="fas fa-compass"></i>
+                <span>Voyago AI</span>
+            </div>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#destinations" class="nav-link">Destinations</a></li>
+                <li><a href="#planner" class="nav-link">AI Planner</a></li>
+                <li><a href="#weather" class="nav-link">Weather</a></li>
+                <li><a href="#budget" class="nav-link">Budget</a></li>
+                <li class="guest-only"><button class="nav-btn btn-outline" id="login-btn">Log In</button></li>
+                <li class="guest-only"><button class="nav-btn btn-solid" id="register-btn">Sign Up</button></li>
+                <li id="user-wrapper" class="user-menu-wrapper">
+                    <button class="user-profile-btn" id="user-btn">
+                        <img src="" alt="Avatar" class="user-avatar" id="user-avatar">
+                        <span id="user-name">Profile</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="user-dropdown" id="user-dropdown">
+                        <div class="dropdown-header">
+                            <img src="" alt="Avatar" id="dropdown-avatar">
+                            <div>
+                                <h4 id="dropdown-name">Traveler</h4>
+                                <p id="dropdown-email">traveler@voyago.com</p>
+                            </div>
+                        </div>
+                        <ul class="dropdown-links">
+                            <li><a href="#planner"><i class="fas fa-route"></i> My Trips</a></li>
+                            <li><a href="#" id="admin-toggle-btn" class="admin-only"><i class="fas fa-user-shield"></i> Admin Dashboard</a></li>
+                            <li><button id="logout-btn"><i class="fas fa-sign-out-alt"></i> Log Out</button></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><button class="icon-btn" id="theme-toggle"><i class="fas fa-moon"></i></button></li>
+                <li>
+                    <button class="icon-btn" id="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">0</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-bg">
+            <div class="particles" id="particles"></div>
+            <div class="glow glow-1"></div>
+            <div class="glow glow-2"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div id="user-greeting" class="user-greeting">
+                    <p id="greeting-text">Welcome back, Traveler!</p>
+                    <button class="btn-logout-top" id="logout-btn-top">Logout</button>
+                </div>
+                <h1 class="hero-title">Discover Your Next <span class="gradient">Perfect Journey</span></h1>
+                <p class="hero-subtitle">AI-powered travel planning for unforgettable experiences</p>
+                
+                <div class="search-bar">
+                    <i class="fas fa-map-pin"></i>
+                    <input type="text" id="hero-search" placeholder="Where to go?">
+                    <button class="btn-search" id="hero-search-btn">Search</button>
+                </div>
+                
+                <div class="cta-buttons">
+                    <button class="btn-primary btn-lg" id="start-planning-btn">Start Planning</button>
+                    <button class="btn-secondary btn-lg" id="explore-now-btn">Explore Now</button>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat"><h3>50K+</h3><p>Happy Travelers</p></div>
+                    <div class="stat"><h3>180+</h3><p>Destinations</p></div>
+                    <div class="stat"><h3>1M+</h3><p>Trips Planned</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="destinations" class="destinations section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Popular Destinations</h2>
+                <p class="section-subtitle">Explore top recommended getaways around the world</p>
+            </div>
+            <div class="destinations-grid" id="destinations-grid">
+                </div>
+        </div>
+    </section>
+
+    <section id="planner" class="planner section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">AI Trip Planner</h2>
+                <p class="section-subtitle">Generate a custom timeline itinerary tailored to your dates and preferences</p>
+            </div>
+            <div class="planner-card">
+                <div class="planner-form">
+                    <div class="form-group">
+                        <label for="planner-dest">Where do you want to go?</label>
+                        <input type="text" id="planner-dest" placeholder="e.g., Paris, Tokyo, New York">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="planner-start">Start Date</label>
+                            <input type="date" id="planner-start">
+                        </div>
+                        <div class="form-group">
+                            <label for="planner-end">End Date</label>
+                            <input type="date" id="planner-end">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="planner-budget">Approximate Budget ($)</label>
+                        <input type="number" id="planner-budget" placeholder="e.g., 2000">
+                    </div>
+                    <button class="btn-primary btn-full" id="generate-plan">Generate Smart Itinerary</button>
+                </div>
+                <div class="planner-results" id="plan-results">
+                    <div class="placeholder-results">
+                        <i class="fas fa-route"></i>
+                        <p>Fill out the parameters and click generate to configure your AI plan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="weather" class="weather section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Live Destination Weather</h2>
+                <p class="section-subtitle">Stay prepared with live atmospheric forecasts</p>
+            </div>
+            <div class="weather-search">
+                <input type="text" id="weather-city" placeholder="Enter city name...">
+                <button class="btn-primary" id="weather-btn">Get Weather</button>
+            </div>
+            <div class="weather-grid" id="weather-grid">
+                </div>
+        </div>
+    </section>
+
+    <section id="budget" class="budget section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Smart Budget Calculator</h2>
+                <p class="section-subtitle">Breakdown your trip expenses effortlessly</p>
+            </div>
+            <div class="budget-card">
+                <div class="budget-form">
+                    <div class="form-group">
+                        <label for="budget-flights">Flights/Transportation ($)</label>
+                        <input type="number" id="budget-flights" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="budget-hotels">Accommodations ($)</label>
+                        <input type="number" id="budget-hotels" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="budget-food">Food & Dining ($)</label>
+                        <input type="number" id="budget-food" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="budget-activities">Activities & Excursions ($)</label>
+                        <input type="number" id="budget-activities" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="budget-transport">Local Transit ($)</label>
+                        <input type="number" id="budget-transport" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="budget-misc">Miscellaneous ($)</label>
+                        <input type="number" id="budget-misc" value="0">
+                    </div>
+                    <button class="btn-primary btn-full" id="calc-budget">Calculate Matrix</button>
+                </div>
+                <div class="budget-summary">
+                    <h3>Summary Breakdown</h3>
+                    <div id="budget-breakdown">
+                        <p class="text-secondary">Perform a calculation to build details.</p>
+                    </div>
+                    <div class="total-budget" id="total-budget">Total: $0.00</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-final">
+        <div class="container">
+            <h2>Ready to Plan Your Perfect Journey?</h2>
+            <button class="btn-primary btn-lg" id="get-started-btn">Get Started Now</button>
+        </div>
+    </section>
+
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" id="auth-close"><i class="fas fa-times"></i></button>
+            <div class="auth-tabs">
+                <button class="tab-btn active" data-tab="login">Sign In</button>
+                <button class="tab-btn" data-tab="register">Create Account</button>
+            </div>
+            
+            <form id="login-form" class="auth-form active">
+                <div class="form-group">
+                    <label for="login-email">Email Address</label>
+                    <input type="email" id="login-email" required placeholder="name@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="login-pass">Password</label>
+                    <input type="password" id="login-pass" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn-primary btn-full">Sign In</button>
+            </form>
+
+            <form id="register-form" class="auth-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="reg-fname">First Name</label>
+                        <input type="text" id="reg-fname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-lname">Last Name</label>
+                        <input type="text" id="reg-lname" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="reg-email">Email Address</label>
+                    <input type="email" id="reg-email" required placeholder="name@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="reg-pass">Password</label>
+                    <input type="password" id="reg-pass" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn-primary btn-full">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="admin-modal" class="modal">
+        <div class="modal-content modal-xl">
+            <button class="modal-close" id="admin-close"><i class="fas fa-times"></i></button>
+            <div class="admin-container">
+                <aside class="admin-sidebar">
+                    <h2>Admin Center</h2>
+                    <ul class="admin-nav">
+                        <li><button class="admin-nav-btn active" data-section="dashboard"><i class="fas fa-chart-pie"></i> Metrics Dashboard</button></li>
+                        <li><button class="admin-nav-btn" data-section="users"><i class="fas fa-users"></i> User Administration</button></li>
+                        <li><button class="admin-nav-btn" data-section="analytics"><i class="fas fa-analytics"></i> Deep Analytics</button></li>
+                    </ul>
+                </aside>
+                <main class="admin-main">
+                    <div id="dashboard-section" class="admin-section active">
+                        <h3>Metrics Dashboard</h3>
+                        <div class="admin-stats">
+                            <div class="stat"><span class="stat-label">Registered Profiles</span><span class="stat-value" id="stat-users">0</span></div>
+                            <div class="stat"><span class="stat-label">Total Trips</span><span class="stat-value" id="stat-trips">0</span></div>
+                            <div class="stat"><span class="stat-label">Total Revenue</span><span class="stat-value" id="stat-revenue">$0</span></div>
+                        </div>
+                    </div>
+                    <div id="users-section" class="admin-section">
+                        <h3>User Management</h3>
+                        <div class="users-list" id="users-list"></div>
+                    </div>
+                    <div id="analytics-section" class="admin-section">
+                        <h3>Analytics</h3>
+                        <p>Analytics coming soon...</p>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <div class="chatbot" id="chatbot">
+        <div class="chatbot-header">
+            <h4>Voyago AI Assistant</h4>
+            <button id="chatbot-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="chatbot-messages" id="chat-messages"></div>
+        <form class="chatbot-input" id="chat-form">
+            <input type="text" id="chat-input" placeholder="Ask me anything...">
+            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+        </form>
+    </div>
+    <button class="chatbot-btn" id="chatbot-btn"><i class="fas fa-robot"></i></button>
+
+    <div id="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
